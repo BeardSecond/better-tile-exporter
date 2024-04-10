@@ -96,7 +96,8 @@ public class BetterTilePlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onConfigChanged(ConfigChanged event) throws Exception {
+	public void onConfigChanged(ConfigChanged event) throws Exception
+	{
 		if (event.getGroup().equals(BetterTileConfig.BETTER_TILE_CONFIG_GROUP))
 		{
 			removeMenus();
@@ -149,7 +150,6 @@ public class BetterTilePlugin extends Plugin
 		{
 			is_close = false;
 		}
-
 		return is_close;
 	}
 
@@ -184,7 +184,6 @@ public class BetterTilePlugin extends Plugin
 		Iterator<GroundMarkerPoint> iterator = activePoints.iterator();
 		while (iterator.hasNext()) {
 			GroundMarkerPoint marker = iterator.next();
-			log.info(String.format("Label: %s", marker.getLabel()));
 			if (filter_on_distance) {
 				if (!is_marker_close(marker)) {
 					iterator.remove();
@@ -203,15 +202,12 @@ public class BetterTilePlugin extends Plugin
 		}
 
 		final String exportDump = gson.toJson(activePoints);
-
-
 		log.debug("Exported ground markers: {}", exportDump);
 
 		Toolkit.getDefaultToolkit()
 				.getSystemClipboard()
 				.setContents(new StringSelection(exportDump), null);
 		sendChatMessage(activePoints.size() + " ground markers were copied to your clipboard.");
-
 	}
 
 	private void exportVisibleMarkers(MenuEntry menuEntry)
